@@ -9,12 +9,16 @@ class BanksView extends Component {
     super(props);
   }
 
+  findBank(input) {
+    console.log(input.target.value);
+  }
+
   render() {
     return (
       <div>
         <h1>Список банков</h1>
+        <Search findBank={this.findBank} placeholder='Введите БИК или название банка' />
         <Link to='/'>Назад</Link>
-        <Search />
       </div>
     );
   }

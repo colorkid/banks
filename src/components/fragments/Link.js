@@ -17,4 +17,3 @@ export function Link(props) {
 Link.propTypes = {
   to: PropTypes.string.isRequired
 }
-

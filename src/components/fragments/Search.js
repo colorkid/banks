@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 export function Search(props) {
   return (
-    <input className='search' type='search'></input>
+    <input className='search' placeholder={props.placeholder} type='search' onKeyUp={props.findBank}></input>
   )
+}
+
+Search.propTypes = {
+  findBank: PropTypes.func.isRequired,
+  placeholder: PropTypes.string
 }

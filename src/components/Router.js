@@ -1,34 +1,10 @@
 import React, { Component } from 'react';
+import { matchPath } from '../utils/routerHelpers.js';
 import PropTypes from 'prop-types';
 
-const matchPath = (pathname, options) => {
-  const { exact = false, path } = options;
-  if (!path) {
-    return {
-      path: null,
-      url: pathname,
-      isExact: true,
-    }
-  }
-  const match = new RegExp(`^${path}`).exec(pathname);
-  if (!match) {
-    return null;
-  }
-  const url = match[0];
-  const isExact = pathname === url;
-  if (exact && !isExact) {
-    return null;
-  }
-  return {
-    path,
-    url,
-    isExact,
-  }
-}
-
-let instances = [];
-const register = comp => instances.push(comp);
-const unregister = comp => instances.splice(instances.indexOf(comp), 1);
+export let instances = [];
+export const register = comp => instances.push(comp);
+export const unregister = comp => instances.splice(instances.indexOf(comp), 1);
 
 export const historyPush = path => {
   window.history.pushState({}, null, path);
