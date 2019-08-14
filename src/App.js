@@ -17,12 +17,13 @@ const Container= styled.div`
   height: 100vh;
   margin: auto;
 `;
+
 class App extends Component {
   render() {
     return (
       <Container>
         <Route exact path="/" component={Home} />
-        <Route path="/list" component={BanksView} />
+        <Route path="/banks-view" component={BanksView} />
         <Route path="/load" component={AddBankView} />
       </Container>
     );

@@ -3,51 +3,51 @@ import { Link } from '../fragments/Link';
 import HandleForm from './HandleForm';
 import PropTypes from 'prop-types';
 import styled from 'styled-components'
+import { TextTitle } from '../fragments/TextComponents';
+import { Button } from '../fragments/ButtonsComponents';
 
-
-const Button = styled.button`
-  width: calc(50% - 10px);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 28px;
-  margin: 10px 0;
-  color: #fff;
-  background-color: #db2727;
-  border: none;
-  border-radius: 2px;
-  &:hover {
-    cursor: pointer;
-    background-color: #c32525;
-  }
-`;
-
-const H1 = styled.h1`
-  width: 100%;
-  color: #27aedb;
-  text-align: center;
-`;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `;
+
 class AddBankView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isShowHandleForm: false,
-      isShowApiForm: false
+      isShowLoadForm: false
     };
     this.showHandleForm = this.showHandleForm.bind(this);
     this.hideHandleForm = this.hideHandleForm.bind(this);
-    this.showApiForm = this.showApiForm.bind(this);
+    this.showLoadForm = this.showLoadForm.bind(this);
+    this.hideLoadForm = this.hideLoadForm.bind(this);
+    this.clickOnHandleButton = this.clickOnHandleButton.bind(this);
+    this.clickOnLoadButton = this.clickOnLoadButton.bind(this);
   }
 
-  showApiForm() {
+  clickOnHandleButton() {
+    this.showHandleForm();
+    this.hideLoadForm();
+  }
+
+  clickOnLoadButton() {
+    this.showLoadForm();
     this.hideHandleForm();
+  }
+
+  showLoadForm() {
+    this.setState({
+      isShowLoadForm: true
+    });
+  }
+
+  hideLoadForm() {
+    this.setState({
+      isShowLoadForm: false
+    });
   }
 
   showHandleForm() {
@@ -65,11 +65,11 @@ class AddBankView extends Component {
   render() {
     return (
       <>
-        <H1>Добавить банк</H1>
+        <TextTitle>Добавить банк</TextTitle>
         <Link to='/'>Назад</Link>
         <Container>
-          <Button onClick={this.showHandleForm}>В ручную</Button>
-          <Button onClick={this.showApiForm}>По бик</Button>
+          <Button onClick={this.clickOnHandleButton} red>В ручную</Button>
+          <Button onClick={this.clickOnLoadButton} red>По бик</Button>
         </Container>
         {this.state.isShowHandleForm && <HandleForm hideHandleForm={this.hideHandleForm} title='Введите данные'/>}
       </>

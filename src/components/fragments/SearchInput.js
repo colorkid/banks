@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
-export function Search(props) {
+export function SearchInput(props) {
   return (
-    <Input placeholder={props.placeholder} type='search' onKeyUp={props.findBank}></Input>
+    <Input placeholder={props.placeholder} type='search' onKeyUp={props.findCallback}></Input>
   )
 }
 
-Search.propTypes = {
-  findBank: PropTypes.func.isRequired,
+SearchInput.propTypes = {
+  findCallback: PropTypes.func.isRequired,
   placeholder: PropTypes.string
 }
 
