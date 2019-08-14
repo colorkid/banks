@@ -16,16 +16,17 @@ class BanksView extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <H1>Список банков</H1>
         <Search findBank={this.findBank} placeholder='Введите БИК или название банка' />
         <Link to='/'>Назад</Link>
-      </div>
+      </>
     );
   }
 }
 
 const H1 = styled.h1`
+  width: 100%;
   color: #27aedb;
   text-align: center;
 `;

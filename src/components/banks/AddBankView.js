@@ -1,43 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from '../fragments/Link';
-import PopUpBank from './PopUpBank';
+import HandleForm from './HandleForm';
 import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
-class AddBankView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {isShowPopUpBank: false};
-    this.showPopUpBank = this.showPopUpBank.bind(this);
-    this.hidePopUpBank = this.hidePopUpBank.bind(this);
-  }
-
-  showPopUpBank() {
-    this.setState({
-      isShowPopUpBank: true
-    });
-  }
-  
-  hidePopUpBank() {
-    this.setState({
-      isShowPopUpBank: false
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <H1>Добавить банк</H1>
-        <Container>
-          <Button onClick={this.showPopUpBank}>В ручную</Button>
-          <Button>По бик</Button>
-        </Container>
-        {this.state.isShowPopUpBank && <PopUpBank hidePopUpBank={this.hidePopUpBank} title='Введите данные'/>}
-        <Link to='/'>Назад</Link>
-      </div>
-    );
-  }
-}
 
 const Button = styled.button`
   width: calc(50% - 10px);
@@ -58,6 +24,7 @@ const Button = styled.button`
 `;
 
 const H1 = styled.h1`
+  width: 100%;
   color: #27aedb;
   text-align: center;
 `;
@@ -67,5 +34,47 @@ const Container = styled.div`
   justify-content: space-between;
   width: 100%;
 `;
+class AddBankView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowHandleForm: false,
+      isShowApiForm: false
+    };
+    this.showHandleForm = this.showHandleForm.bind(this);
+    this.hideHandleForm = this.hideHandleForm.bind(this);
+    this.showApiForm = this.showApiForm.bind(this);
+  }
+
+  showApiForm() {
+    this.hideHandleForm();
+  }
+
+  showHandleForm() {
+    this.setState({
+      isShowHandleForm: true
+    });
+  }
+  
+  hideHandleForm() {
+    this.setState({
+      isShowHandleForm: false
+    });
+  }
+
+  render() {
+    return (
+      <>
+        <H1>Добавить банк</H1>
+        <Link to='/'>Назад</Link>
+        <Container>
+          <Button onClick={this.showHandleForm}>В ручную</Button>
+          <Button onClick={this.showApiForm}>По бик</Button>
+        </Container>
+        {this.state.isShowHandleForm && <HandleForm hideHandleForm={this.hideHandleForm} title='Введите данные'/>}
+      </>
+    );
+  }
+}
   
 export default AddBankView;

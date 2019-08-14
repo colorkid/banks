@@ -2,9 +2,3 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
-
-.container {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
