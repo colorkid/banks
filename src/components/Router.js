@@ -41,6 +41,5 @@ export class Route extends Component {
 
 Route.propTypes = {
   path: PropTypes.string,
-  exact: PropTypes.bool,
-  component: PropTypes.func
+  exact: PropTypes.bool
 }

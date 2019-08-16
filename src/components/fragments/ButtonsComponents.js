@@ -27,4 +27,18 @@ export const Button = styled.button`
     	background-color: #209cc5;
   	}
   `}
+
+  ${props => props.marginRight && css`
+    margin-right: 20px;
+  `}
+`;
+
+export const WrapperButton = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  ${props => props.spacebetween && css`
+    justify-content: space-between;
+  `}
 `;

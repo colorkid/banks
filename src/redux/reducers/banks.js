@@ -1,6 +1,8 @@
 import { ACTION_TYPE } from "../constants";
 
-export const banks = (state = [], action) => {
+const initialState =  JSON.parse(localStorage.getItem('state')) || [];
+
+export const banks = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPE.ADD_BANK:
       return addBank(state, action.payload);
@@ -14,6 +16,7 @@ export const banks = (state = [], action) => {
 }
 
 const addBank = (state, bank) => {
+  localStorage.setItem('state', JSON.stringify([...state, bank]));
   return [...state, bank];
 }
 

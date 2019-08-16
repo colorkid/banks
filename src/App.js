@@ -6,7 +6,7 @@ import BanksView from './components/banks/BanksView';
 import styled from 'styled-components'
 import './App.css';
 
-const Container= styled.div`
+const MainContainer= styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -21,11 +21,11 @@ const Container= styled.div`
 class App extends Component {
   render() {
     return (
-      <Container>
+      <MainContainer>
         <Route exact path="/" component={Home} />
         <Route path="/banks-view" component={BanksView} />
-        <Route path="/load" component={AddBankView} />
-      </Container>
+        <Route path="/add-banks-view" component={AddBankView} />
+      </MainContainer>
     );
   }
 }

@@ -12,7 +12,7 @@ export const Url = styled.a`
   justify-content: center;
   padding: 0 10px;
   height: 28px;
-  margin: 10px 0;
+  margin: 10px;
   color: #fff;
   background-color: #27aedb;
   border-radius: 2px;
@@ -22,4 +22,16 @@ export const Url = styled.a`
     cursor: pointer;
     background-color: #209cc5;
   }
+`;
+
+export const WarningParagraph = styled.p`
+  width: 100%;
+  color: #db2727;
+  font-size: 14px;
+`;
+
+export const SuccessParagraph = styled.p`
+  width: 100%;
+  color: #1FAF1F;
+  font-size: 14px;
 `;
